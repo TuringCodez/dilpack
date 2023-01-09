@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "dilpack_jedld"
+name = "dilpack"
 version = "0.0.1"
 authors = [
   { name="Joseph Emmanuel Dayo", email="jddayo@up.edu.ph" },
@@ -17,7 +17,8 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-  "numpy"
+  "numpy",
+  "pillow"
 ]
 
 [project.urls]

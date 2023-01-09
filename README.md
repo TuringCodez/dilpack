@@ -42,3 +42,12 @@ Directory Structure
 └── tests
     └── test_mahalanobis.py
 ```
+
+Developing locally
+==================
+
+Run the following command in the package root folder to install the current package in editable mode
+
+```
+pip install -e .
+```
