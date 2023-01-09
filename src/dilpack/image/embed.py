@@ -74,7 +74,7 @@ def embed(cover_image, secret_image, alpha=0.1, invert_secret_image = False):
   Embeds a secret image into a cover_image, acting as a sort of watermark
 
   :param cover_image: Image object from Pillow to be used as cover image
-  :param secret_image: Image object from Pillow to be used as secret image
+  :param secret_image: Image object from Pillow to be used as secret image. Should be monochrome/grayscale for it to work properly
   :param alpha: Optional format override.  If omitted, the
       format to use is determined from the filename extension.
       If a file object was used instead of a filename, this

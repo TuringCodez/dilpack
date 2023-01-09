@@ -14,9 +14,9 @@ Directory Structure
 .
 ├── LICENSE
 ├── README.md
-├── example
+├── example - All sample Juptyer Notebooks can be placed here
 │   └── image
-│       ├── Sample Demo Notebooks related to image processing
+│       ├── Sample Demo Jupyter Notebooks related to image processing
 ├── src
 │   └── dilpack
 │       ├── Main folder
