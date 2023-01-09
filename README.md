@@ -11,34 +11,34 @@ Directory Structure
 -------------------
 
 ```
+.
 ├── LICENSE
 ├── README.md
-├── pyproject.toml
+├── example
+│   └── image
+│       ├── Sample Demo Notebooks related to image processing
 ├── src
-│   └── dilpack_jddayo
-│       ├── __init__.py
-│       ├── classifier
-│       │   ├── __init__.py
-│       │   └── mahalanobis.py
-│       ├── clustering
-│       │   ├── __init__.py
-│       │   └── kmeans.py
-│       ├── graph
-│       │   └── __init__.py
-│       ├── image
-│       │   └── __init__.py
-│       ├── learn
-│       │   ├── __init__.py
-│       │   ├── face
-│       │   │   └── __init__.py
-│       │   └── optimizer
-│       │       └── __init__.py
-│       ├── recommender
-│       │   └── __init__.py
-│       ├── reduction
-│       │   └── __init__.py
-│       └── utils
-│           └── __init__.py
+│   └── dilpack
+│       ├── Main folder
+│       ├── classifier
+│       │   ├── Algorithms related to classifiers
+│       ├── clustering
+│       │   ├── Clsutering Algorithms like k-means etc.
+│       ├── graph
+│       │   └── Algorithms related to graphs
+│       ├── image
+│       │   ├── Algorithms related to image processing
+│       ├── learn
+│       │   ├── face
+│       │   │   └── face recognition
+│       │   └── optimizer
+│       │       └── Optimizers like ADAM and gradient descent
+│       ├── recommender
+│       │   └── Algorithms for recommenders
+│       ├── reduction
+│       │   └── Algorithms for dimensionality reduction (e.g. PCA)
+│       └── utils
+│           └── Utility Functions
 └── tests
     └── test_mahalanobis.py
 ```
