@@ -5,7 +5,7 @@
 import numpy as np
 from numpy import asarray
 from PIL import Image
-from utils.qr_decompose import computeQR
+from dilpack.linalg.qr_decompose import computeQR
 
 def __image_to_float(image, grayscale=False, invert_secret_image=False):
   image_array = asarray(image)
