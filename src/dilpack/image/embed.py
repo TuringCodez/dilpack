@@ -5,6 +5,7 @@
 import numpy as np
 from numpy import asarray
 from PIL import Image
+from utils.qr_decompose import computeQR
 
 def __image_to_float(image, grayscale=False, invert_secret_image=False):
   image_array = asarray(image)
@@ -49,25 +50,7 @@ def __float_to_image(image_array, grayscale=False):
   return Image.fromarray(new_image)
 
 
-# Implemention of the Modified Gram-Schimt
-def __computeQR(matrix):
-  m, n = np.shape(matrix)
-  # transpose since we are going to work on the columns
 
-  ortho_matrix = matrix.copy()
-
-  for x in range(n):
-    pivot_col = np.transpose(ortho_matrix[:,x])
-    pivot_col /= np.linalg.norm(pivot_col)
-    ortho_matrix[:,x] = np.transpose(pivot_col)
-    for current in range(x + 1, n):
-      v = np.transpose(ortho_matrix[:,current])
-      ortho_matrix[:,current] -= np.transpose((np.dot(pivot_col, v)/np.dot(pivot_col,pivot_col)) * pivot_col)
-
-  R = np.matmul(np.transpose(ortho_matrix), matrix)
-  Q = ortho_matrix
- 
-  return Q, R
 
 def embed(cover_image, secret_image, alpha=0.1, invert_secret_image = False):
   """
@@ -84,8 +67,8 @@ def embed(cover_image, secret_image, alpha=0.1, invert_secret_image = False):
   """
   ImageC = __image_to_float(cover_image)
   ImageS = __image_to_float(secret_image, grayscale=True, invert_secret_image=invert_secret_image)
-  Qc, Rc = __computeQR(ImageC)
-  Qs, Rs = __computeQR(ImageS)
+  Qc, Rc = computeQR(ImageC)
+  Qs, Rs = computeQR(ImageS)
 
   m ,n  = np.shape(Qc)
   new_image = np.zeros([n, m])
@@ -104,7 +87,7 @@ def extract(stego_image, Qs, Rc, alpha = 0.1):
   :returns: Image
   """
   img_decomp = __image_to_float(stego_image)
-  _, Rsi = __computeQR(img_decomp)
+  _, Rsi = computeQR(img_decomp)
   Rnew = (Rsi - Rc) / alpha
   embedded_image = np.matmul(Qs, Rnew)
   return __float_to_image(embedded_image, grayscale=True)
