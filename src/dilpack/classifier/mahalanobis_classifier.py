@@ -102,11 +102,15 @@ X = np.array([6., 500., 40.])
 mahalanobis_dist(X,A)
 
 # Classifier example
+
+# data path
+data_path = '../../../example/classifier/mahalonobis'
+
 # Load
-train = np.load('Data/mahalanobis_classifier/train.npy')
-train_labels = np.load('Data/mahalanobis_classifier/train_labels.npy')
-test = np.load('Data/mahalanobis_classifier/test.npy')
-test_labels = np.load('Data/mahalanobis_classifier/test_labels.npy')
+train = np.load(data_path + '/train.npy')
+train_labels = np.load(data_path + '/train_labels.npy')
+test = np.load(data_path + '/test.npy')
+test_labels = np.load(data_path + '/test_labels.npy')
 
 # classifier
 pred_class_mahalanobis(train, train_labels, test)
