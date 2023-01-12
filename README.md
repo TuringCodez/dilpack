@@ -14,9 +14,10 @@ Directory Structure
 .
 ├── LICENSE
 ├── README.md
-├── example - All sample Juptyer Notebooks can be placed here
-│   └── image
-│       ├── Sample Demo Jupyter Notebooks related to image processing
+├── example - All Juptyer Notebooks that demonstrate how the algorithms can be used can be placed here.
+│   ├── image
+│   │    ├── Sample Demo Jupyter Notebooks related to image processing like Stegonography
+|   ├── classifier - Sample Datasets for classification
 ├── src
 │   └── dilpack
 │       ├── Main folder
@@ -39,7 +40,7 @@ Directory Structure
 │       │   └── Algorithms for dimensionality reduction (e.g. PCA)
 │       └── utils
 │           └── Utility Functions
-└── tests
+└── tests - Intended for python unit test
     └── test_mahalanobis.py
 ```
 
@@ -51,3 +52,15 @@ Run the following command in the package root folder to install the current pack
 ```
 pip install -e .
 ```
+
+How to use
+==========
+
+The example folder should contain notebooks on how to use the various algorithms in this package as well as
+sample datasets
+
+
+Credits
+=======
+
+Folder structure, organization and code herein are contributions of the Turing Batch AI 211 students

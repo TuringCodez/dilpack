@@ -4,7 +4,6 @@
 
 import numpy as np
 from numpy import asarray
-from PIL import Image
 from dilpack.linalg.qr_decompose import computeQR
 
 def __image_to_float(image, grayscale=False, invert_secret_image=False):
@@ -47,10 +46,7 @@ def __float_to_image(image_array, grayscale=False):
         new_image[i, j, 2] = (Qsi_discrete[i, j] >> 16) & 0xff
         new_image[i, j, 1] = (Qsi_discrete[i, j] >> 8) & 0xff
         new_image[i, j, 0] = Qsi_discrete[i, j] & 0xff
-  return Image.fromarray(new_image)
-
-
-
+  return new_image
 
 def embed(cover_image, secret_image, alpha=0.1, invert_secret_image = False):
   """
@@ -63,7 +59,7 @@ def embed(cover_image, secret_image, alpha=0.1, invert_secret_image = False):
       If a file object was used instead of a filename, this
       parameter should always be used.
   :param invert_secret_image: If True, secret image is inverted, black on white, white on black
-  :returns: (Stego-Image in PIL format, Q secret image, R cover image, Image raw array)
+  :returns: (Stego-Image in matrix form (MxMX3), Q secret image, R cover image, Image raw array)
   """
   ImageC = __image_to_float(cover_image)
   ImageS = __image_to_float(secret_image, grayscale=True, invert_secret_image=invert_secret_image)
