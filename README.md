@@ -18,7 +18,7 @@ Directory Structure
 │   ├── image
 │   │    ├── Sample Demo Jupyter Notebooks related to image processing like Stegonography
 |   ├── classifier - Sample Datasets for classification
-├── src
+├── src - Main source code for the algorithms
 │   └── dilpack
 │       ├── Main folder
 │       ├── classifier
@@ -34,6 +34,7 @@ Directory Structure
 │       │   │   └── face recognition
 │       │   └── optimizer
 │       │       └── Optimizers like ADAM and gradient descent
+|       ├── linalg - Basic linear algebra algorithms like QR decomposition, LU factorization etc.
 │       ├── recommender
 │       │   └── Algorithms for recommenders
 │       ├── reduction
@@ -57,8 +58,17 @@ How to use
 ==========
 
 The example folder should contain notebooks on how to use the various algorithms in this package as well as
-sample datasets
+sample datasets. In general the algorithm can be referenced in the following way:
 
+```python
+from dilpack.<category>.<algorithm> import <method>
+```
+
+Example:
+
+```python
+from dilpack.image.embed import embed, extract
+```
 
 Credits
 =======
