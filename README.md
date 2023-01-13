@@ -27,6 +27,8 @@ Directory Structure
 │       │   ├── Clsutering Algorithms like k-means etc.
 │       ├── graph
 │       │   └── Algorithms related to graphs
+│       ├── games
+│       │   └── Algorithms used for game outcome predictions/algorithms useful for games programming
 │       ├── image
 │       │   ├── Algorithms related to image processing
 │       ├── learn
