@@ -9,7 +9,7 @@ class RockPaperScissors:
         self.y = np.array(y) if y is not None else np.array([1 / 3, 1 / 3, 1 / 3])
 
     def calculate_expected_payoff(self):
-        return self.x.T @ self.payoff_matrix @ self.y
+        return self.x @ self.payoff_matrix @ self.y.T
 
 
 class BasketballOffense:
@@ -20,7 +20,7 @@ class BasketballOffense:
 
     def calculate_expected_payoff(self, x=None):
         shots_dist = x if x is not None else self.x
-        return shots_dist @ self.payoff_matrix @ self.y
+        return shots_dist @ self.payoff_matrix @ self.y.T
 
     def optimal_strategy(self):
         shots_grid = dict(
@@ -43,11 +43,16 @@ class BasketballOffense:
 
 
 class NBASportsBetting:
-    def __init__(self, money=None, odds=None, win_pct=None):
+    def __init__(self, money=None, strategy=None, odds=None, win_pct=None):
+        self.teams = ["Celtics", "Bucks", "Nets", "Nuggets"]
         self.money = money if money is not None else 100
+        self.strategy = (
+            np.array(strategy)
+            if strategy is not None
+            else np.array([100, 100, 100, 100])
+        )
         self.odds = odds if odds is not None else [400, 550, 800, 900]
         self.payoff_matrix = self.generate_payoff()
-        self.teams = ["Celtics", "Bucks", "Nets", "Nuggets"]
         self.win_pct = (
             win_pct
             if win_pct is not None
@@ -57,14 +62,14 @@ class NBASportsBetting:
 
     def generate_payoff(self):
         p = np.diag(self.odds)
-        p = np.c_[p, np.zeros(4)]
-        p[p == 0] = self.money
+        p = np.c_[p, np.zeros(len(self.teams))]
+        p[p == 0] = -100
 
         return p
 
-    def calculate_expected_payoff(self, x):
-        money_to_bet = np.array(x) / 100
-        return (money_to_bet @ self.payoff_matrix @ self.probs)[0]
+    def calculate_expected_payoff(self, x=None):
+        credits_to_bet = x if x is not None else self.strategy / 100
+        return (credits_to_bet @ self.payoff_matrix @ self.probs)[0]
 
     def optimal_strategy(self):
         credits_grid = dict(
