@@ -4,16 +4,19 @@ from sklearn.neighbors import radius_neighbors_graph
 
 class SpectralClustering:
     def __init__(self, X, num_clusters):
+        self.X = X
         self.K = num_clusters
         self.max_iterations = 1000
         self.num_examples = X.shape[0]
         self.num_features = X.shape[0]
 
     # Get eigenvectors and eigenvalues
-    def get_eigs_from_laplacian(self, X):
+    def get_eigs_from_laplacian(self):
 
         # Compute graph Laplacian from data
-        W = radius_neighbors_graph(X, 0.4, mode="distance", include_self=True).toarray()
+        W = radius_neighbors_graph(
+            self.X, 0.4, mode="distance", include_self=True
+        ).toarray()
         D = np.diag(np.sum(np.array(W), axis=1))
         L = D - W
 
@@ -63,7 +66,7 @@ class SpectralClustering:
 
     # Fit data
     def fit(self, X):
-        eigvals, eigvecs = self.get_eigs_from_laplacian(X)
+        eigvals, eigvecs = self.get_eigs_from_laplacian()
 
         # For K=2, spectral clustering is done through Fiedler vector.
         if self.K == 2:
