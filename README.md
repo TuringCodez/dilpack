@@ -32,6 +32,7 @@ Directory Structure
 │       ├── image
 │       │   ├── Algorithms related to image processing
 │       ├── learn
+|       |   ├── computational - Computational Graph library
 │       │   ├── face
 │       │   │   └── face recognition
 │       │   └── optimizer
